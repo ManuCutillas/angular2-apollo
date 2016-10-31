@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { ApolloQueryObservable } from './ApolloQueryObservable';
 
 import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/fromPromise';
 
 export const angularApolloClient = new OpaqueToken('AngularApolloClient');
 export function defaultApolloClient(client: ApolloClient): any {
@@ -25,12 +26,12 @@ export class Angular2Apollo {
     return new ApolloQueryObservable(rxify(this.client.watchQuery)(options));
   }
 
-  public query(options: any) {
-    return this.client.query(options);
+  public query(options: any): Observable<ApolloQueryResult> {
+    return Observable.fromPromise(this.client.query(options));
   }
 
-  public mutate(options: any) {
-    return this.client.mutate(options);
+  public mutate(options: any): Observable<ApolloQueryResult> {
+    return Observable.fromPromise(this.client.mutate(options));
   }
 
   public subscribe(options: any): Observable<any> {
