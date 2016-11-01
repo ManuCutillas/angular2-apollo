@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Made `mutate()` and `query()` methods to return `Observable` instead of `Promise` ([PR #140](https://github.com/apollostack/angular2-apollo/pull/140))
+
 ### v0.7.0
 
 - Added support for **Ahead of Time** compilation ([PR #124](https://github.com/apollostack/angular2-apollo/pull/124))
